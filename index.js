@@ -12,8 +12,10 @@ app.use(express.json());
 app.use(cors())
 const DOMAIN = "http://localhost:5173";
 app.post("/create-payment-link", async (req, res) => {
+  const currentDate = new Date();
+  const timeInMilliseconds = currentDate.getTime();
   const order = {
-    orderCode: 58715,
+    orderCode: timeInMilliseconds,
     amount: 5000,
     description: "Thanh toan don hang",
     cancelUrl: `${DOMAIN}`,
